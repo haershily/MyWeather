@@ -33,12 +33,15 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
     TextView resulttv;
     ImageView imageView;
-    public void findweather(View view){
+    public void findweather(View view) throws UnsupportedEncodingException {
         Log.i("City name :",editText.getText().toString());
         InputMethodManager mgr=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         mgr.hideSoftInputFromWindow(editText.getWindowToken(),0);
+
+        String encodecityname=URLEncoder.encode(editText.getText().toString(),"UTF-8");
+        Log.i("encodecityname",encodecityname);
         DownloadTask task=new DownloadTask();
-        task.execute("http://api.openweathermap.org/data/2.5/weather?q="+editText.getText().toString()+"&appid=43220716eb6045a9a33eac9808e34e58");
+        task.execute("http://api.openweathermap.org/data/2.5/weather?q="+encodecityname+"&appid=43220716eb6045a9a33eac9808e34e58");
     }
     public class DownloadTask extends AsyncTask<String,Void,String> {
         @Override

@@ -53,6 +53,7 @@
         android:gravity="center"
       android:layout_below="@id/button1"
         android:layout_height="wrap_content"
-        android:id="@+id/resulttv" />
+        android:id="@+id/resulttv"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>
